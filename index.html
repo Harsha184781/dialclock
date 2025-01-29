@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            text-align: center;
+        }
+    img{
+        margin:100px  100px;
+        position:relative;
+    }
+    .hour{
+        background-color: orange;
+        padding:2px;
+        border:2px solid orange;
+        position:absolute;
+        top:280px;
+        left:753px;
+        height:80px;
+        border-radius:5px;
+        transform-origin:bottom;
+    }
+    .min{
+        background-color: green;
+        padding:2px;
+        border:2px solid green;
+        position:absolute;
+        top:243px;
+        left:755px;
+        height:125px;
+        border-radius:5px;
+        transform-origin:bottom;
+    }
+    .sec{
+        background-color: white;
+        border: 2px solid white;
+        position: absolute;
+        top: 221px;
+        left: 757px;
+        height: 150px;
+        border-radius: 5px;
+        transform-origin:bottom;
+        
+    }
+    .dot{
+        background-color: white;
+        padding: 7px;
+        border: 2px solid rgb(98, 101, 98);
+        position: absolute;
+        top: 357px;
+        left: 751px;
+        height: 2px;
+        border-radius: 50%;
+    }
+
+    </style>
+</head>
+<body>
+    <img src="./clock.png" alt="">
+    <span class="hour"></span>
+    <span class="min"></span>
+    <span class="sec"></span>
+    <span class="dot"></span>
+
+    <script>
+        const secEle=document.querySelector(".sec")
+        const minEle=document.querySelector(".min")
+        const houEle=document.querySelector(".hour")
+        
+        let secdegre = 0;
+        let mindegre = 0;
+        let houdegre = 0 
+        
+        const seconds =setInterval(()=>{
+            let date = new Date();
+            let hour = date.getHours();
+            let min = date.getMinutes();
+            let sec = date.getSeconds();
+
+            if(hour>12)
+             {
+                 hour =hour-12
+            }
+            
+             secdegre = sec*6
+             secEle.style.transform=`rotate(${secdegre}deg)`
+             mindegre = min*6
+             minEle.style.transform=`rotate(${mindegre}deg)`
+             houdegre = hour*30+ (min*0.5)
+             houEle.style.transform=`rotate(${houdegre}deg)`
+            
+
+        },1000)
+    </script>
+</body>
+</html>
